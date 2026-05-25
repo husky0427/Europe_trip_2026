@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#4a9eff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="歐洲旅行" />
+  <title>歐洲旅行 2026</title>
+  <link rel="manifest" href="/manifest.json" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f1a;
+      --surface: #1c1c2e;
+      --card: #252538;
+      --border: #333355;
+      --accent: #4a9eff;
+      --accent2: #7c5cfc;
+      --success: #34d399;
+      --warn: #fbbf24;
+      --danger: #f87171;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --tab-h: 64px;
+      --header-h: 60px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      z-index: 100;
+      gap: 12px;
+    }
+    #header .globe { font-size: 28px; }
+    #header .title-block h1 { font-size: 17px; font-weight: 700; letter-spacing: .3px; }
+    #header .title-block p { font-size: 12px; color: var(--muted); }
+    #header .badge {
+      margin-left: auto;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    /* ── Content area ── */
+    #content {
+      position: fixed;
+      top: var(--header-h);
+      bottom: var(--tab-h);
+      left: 0; right: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-panel { display: none; padding: 16px; }
+    .tab-panel.active { display: block; }
+
+    /* ── Bottom Nav ── */
+    #nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--tab-h);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 100;
+    }
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 11px;
+      cursor: pointer;
+      transition: color .2s;
+      padding: 8px 0;
+    }
+    .nav-btn .icon { font-size: 22px; line-height: 1; }
+    .nav-btn.active { color: var(--accent); }
+
+    /* ── Cards ── */
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin: 20px 0 10px;
+    }
+    .section-title:first-child { margin-top: 4px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .card-icon { font-size: 26px; }
+    .card-title { font-size: 16px; font-weight: 700; }
+    .card-subtitle { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    /* Status pills */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .pill-ok { background: rgba(52,211,153,.15); color: var(--success); }
+    .pill-warn { background: rgba(251,191,36,.15); color: var(--warn); }
+    .pill-info { background: rgba(74,158,255,.15); color: var(--accent); }
+
+    /* Info rows */
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: 14px;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row .label { color: var(--muted); min-width: 70px; flex-shrink: 0; font-size: 13px; }
+    .info-row .val { flex: 1; }
+
+    /* Alert box */
+    .alert {
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    .alert-warn { background: rgba(251,191,36,.12); border: 1px solid rgba(251,191,36,.3); color: var(--warn); }
+    .alert-info { background: rgba(74,158,255,.12); border: 1px solid rgba(74,158,255,.3); color: #7ec8ff; }
+
+    /* Timeline (itinerary) */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .tl-dot {
+      position: absolute;
+      left: -23px;
+      top: 4px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .tl-dot.accent2 { background: var(--accent2); }
+    .tl-dot.success { background: var(--success); }
+    .tl-date {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .tl-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 13px;
+    }
+    .tl-city { font-size: 15px; font-weight: 700; }
+    .tl-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+    /* Todo list */
+    .todo-list { list-style: none; }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: 14px;
+    }
+    .todo-item:last-child { border-bottom: none; }
+    .todo-icon { font-size: 16px; }
+
+    /* Map link */
+    a.map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    a.map-link:hover { text-decoration: underline; }
+
+    /* Divider */
+    .divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+    /* Empty state */
+    .empty {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+    }
+    .empty .emoji { font-size: 48px; margin-bottom: 12px; }
+    .empty p { font-size: 14px; }
+
+    /* Flight route */
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 6px;
+    }
+    .airport { text-align: center; }
+    .airport .code { font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+    .airport .name { font-size: 11px; color: var(--muted); }
+    .airport .time { font-size: 15px; font-weight: 600; color: var(--accent); margin-top: 2px; }
+    .route-line {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .route-line .plane { font-size: 18px; }
+    .route-line .hr { width: 100%; height: 1px; background: var(--border); }
+    .route-line .flight-no { font-size: 11px; color: var(--muted); }
+
+    /* Accommodation grid */
+    .accom-date {
+      display: flex;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .accom-date span { display: flex; align-items: center; gap: 3px; }
+
+    /* Safe area */
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      #nav { padding-bottom: env(safe-area-inset-bottom); height: calc(var(--tab-h) + env(safe-area-inset-bottom)); }
+      #content { bottom: calc(var(--tab-h) + env(safe-area-inset-bottom)); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+  <div class="globe">✈️</div>
+  <div class="title-block">
+    <h1>歐洲旅行 2026</h1>
+    <p>5/25（日）— 6/12（五）</p>
+  </div>
+  <div class="badge">v1.0</div>
+</header>
+
+<!-- Scrollable Content -->
+<main id="content">
+
+  <!-- ── 交通 Tab ── -->
+  <section class="tab-panel active" id="tab-transport">
+
+    <p class="section-title">✈️ 去程航班</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛫</div>
+        <div>
+          <div class="card-title">台北 → 香港</div>
+          <div class="card-subtitle">5/25（日）</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="flight-route">
+        <div class="airport">
+          <div class="code">TPE</div>
+          <div class="name">桃園</div>
+          <div class="time">19:40</div>
+        </div>
+        <div class="route-line">
+          <div class="plane">✈️</div>
+          <div class="hr"></div>
+          <div class="flight-no">CX451</div>
+        </div>
+        <div class="airport">
+          <div class="code">HKG</div>
+          <div class="name">香港</div>
+          <div class="time">21:45</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="label">航班</span>
+        <span class="val">國泰航空 CX451</span>
+      </div>
+      <div class="info-row">
+        <span class="label">日期</span>
+        <span class="val">2026年5月25日（日）</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛫</div>
+        <div>
+          <div class="card-title">香港 → 阿姆斯特丹</div>
+          <div class="card-subtitle">5/25 深夜 → 5/26 抵達</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="flight-route">
+        <div class="airport">
+          <div class="code">HKG</div>
+          <div class="name">香港</div>
+          <div class="time">23:20</div>
+        </div>
+        <div class="route-line">
+          <div class="plane">✈️</div>
+          <div class="hr"></div>
+          <div class="flight-no">CX271</div>
+        </div>
+        <div class="airport">
+          <div class="code">AMS</div>
+          <div class="name">史基浦</div>
+          <div class="time">06:30+1</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="label">航班</span>
+        <span class="val">國泰航空 CX271</span>
+      </div>
+      <div class="info-row">
+        <span class="label">抵達</span>
+        <span class="val">5/26（一）06:30 阿姆斯特丹</span>
+      </div>
+    </div>
+
+    <p class="section-title">⛴️ 夜班渡輪</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🚢</div>
+        <div>
+          <div class="card-title">鹿特丹 → 赫爾</div>
+          <div class="card-subtitle">P&O Ferries · Pride of Hull</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="flight-route">
+        <div class="airport">
+          <div class="code">RTM</div>
+          <div class="name">鹿特丹</div>
+          <div class="time">20:30</div>
+        </div>
+        <div class="route-line">
+          <div class="plane">⛴️</div>
+          <div class="hr"></div>
+          <div class="flight-no">夜班</div>
+        </div>
+        <div class="airport">
+          <div class="code">HUL</div>
+          <div class="name">赫爾</div>
+          <div class="time">08:00+1</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="label">日期</span>
+        <span class="val">5/30（六）出發 → 5/31（日）抵達</span>
+      </div>
+      <div class="info-row">
+        <span class="label">訂單</span>
+        <span class="val">POOI1F85QGMWQ</span>
+      </div>
+      <div class="info-row">
+        <span class="label">艙房</span>
+        <span class="val">Standard Inside Cabin（2 Bunks）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">已含</span>
+        <span class="val">AMS→RTM 巴士接駁 × 2、Hull→約克巴士 × 2、The Kitchen 晚餐 × 2</span>
+      </div>
+      <div class="divider"></div>
+      <div class="alert alert-warn">
+        ⚠️ 15:00 開放 check-in，16:00 開始登船，出發前 90 分鐘截止
+      </div>
+    </div>
+
+    <p class="section-title">🚂 陸路交通</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🚆</div>
+        <div>
+          <div class="card-title">約克 → 倫敦</div>
+          <div class="card-subtitle">6/2（二）</div>
+        </div>
+        <span class="pill pill-warn" style="margin-left:auto">⏳ 待訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">路線</span>
+        <span class="val">約克 → 倫敦國王十字站</span>
+      </div>
+      <div class="info-row">
+        <span class="label">方式</span>
+        <span class="val">火車（LNER 東海岸主線）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">車程</span>
+        <span class="val">約 2 小時</span>
+      </div>
+      <div class="alert alert-info" style="margin-top:8px">
+        💡 建議提前訂票可省錢，Advance票最划算
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🚄</div>
+        <div>
+          <div class="card-title">倫敦 → 阿姆斯特丹</div>
+          <div class="card-subtitle">6/9（二）</div>
+        </div>
+        <span class="pill pill-warn" style="margin-left:auto">⏳ 待訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">推薦</span>
+        <span class="val">Eurostar（聖潘克拉斯 → 阿姆斯特丹中央）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">車程</span>
+        <span class="val">約 4 小時 20 分鐘</span>
+      </div>
+      <div class="info-row">
+        <span class="label">票價</span>
+        <span class="val">從 £39 起（建議提前買）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">備選</span>
+        <span class="val">easyJet / Ryanair 廉航，£30–70（含行李費另計）</span>
+      </div>
+      <div class="alert alert-info" style="margin-top:8px">
+        💡 帶大行李、城市中心對中心→優先選 Eurostar
+      </div>
+    </div>
+
+    <p class="section-title">✈️ 回程航班</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛬</div>
+        <div>
+          <div class="card-title">阿姆斯特丹 → 香港</div>
+          <div class="card-subtitle">6/11（四）</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="flight-route">
+        <div class="airport">
+          <div class="code">AMS</div>
+          <div class="name">史基浦</div>
+          <div class="time">12:20</div>
+        </div>
+        <div class="route-line">
+          <div class="plane">✈️</div>
+          <div class="hr"></div>
+          <div class="flight-no">CX270</div>
+        </div>
+        <div class="airport">
+          <div class="code">HKG</div>
+          <div class="name">香港</div>
+          <div class="time">隔日凌晨</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="label">航班</span>
+        <span class="val">國泰航空 CX270</span>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        ⚠️ 12:20 起飛！建議 09:30 前從市區出發搭火車（史基浦 15 分鐘），10:00 前到機場
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛬</div>
+        <div>
+          <div class="card-title">香港 → 台北</div>
+          <div class="card-subtitle">6/12（五）</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="flight-route">
+        <div class="airport">
+          <div class="code">HKG</div>
+          <div class="name">香港</div>
+          <div class="time">09:05</div>
+        </div>
+        <div class="route-line">
+          <div class="plane">✈️</div>
+          <div class="hr"></div>
+          <div class="flight-no">CX530</div>
+        </div>
+        <div class="airport">
+          <div class="code">TPE</div>
+          <div class="name">桃園</div>
+          <div class="time">11:00</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="label">航班</span>
+        <span class="val">國泰航空 CX530</span>
+      </div>
+      <div class="info-row">
+        <span class="label">日期</span>
+        <span class="val">2026年6月12日（五）</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── 行程 Tab ── -->
+  <section class="tab-panel" id="tab-itinerary">
+
+    <p class="section-title">🗺️ 整體行程時間軸</p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">5/25（日）</div>
+        <div class="tl-content">
+          <div class="tl-city">🛫 台北出發</div>
+          <div class="tl-desc">CX451 19:40 桃園起飛 → 香港轉機 → CX271 23:20 出發</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot accent2"></div>
+        <div class="tl-date">5/26（一）— 5/30（六）</div>
+        <div class="tl-content">
+          <div class="tl-city">🌷 阿姆斯特丹（4 天）</div>
+          <div class="tl-desc">06:30 抵達史基浦 · 入住 ID公寓酒店<br>景點規劃中…</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">5/30（六）</div>
+        <div class="tl-content">
+          <div class="tl-city">⛴️ 搭渡輪前往英國</div>
+          <div class="tl-desc">巴士接駁至鹿特丹 → Pride of Hull 20:30 出港</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot accent2"></div>
+        <div class="tl-date">5/31（日）— 6/2（二）</div>
+        <div class="tl-content">
+          <div class="tl-city">🏰 約克（約 2 天）</div>
+          <div class="tl-desc">08:00 抵赫爾 → 巴士至約克 09:30<br>⚠️ 飯店 15:00 入住，先寄行李<br>景點規劃中…</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">6/2（二）</div>
+        <div class="tl-content">
+          <div class="tl-city">🚆 搭火車前往倫敦</div>
+          <div class="tl-desc">約克 → 倫敦國王十字（待訂票）</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot accent2"></div>
+        <div class="tl-date">6/2（二）— 6/9（二）</div>
+        <div class="tl-content">
+          <div class="tl-city">🎡 倫敦（7 天）</div>
+          <div class="tl-desc">入住 39 South Lambeth Road<br>景點規劃中…</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">6/9（二）</div>
+        <div class="tl-content">
+          <div class="tl-city">🚄 Eurostar 回阿姆斯特丹</div>
+          <div class="tl-desc">倫敦聖潘克拉斯 → 阿姆斯特丹中央（待訂）</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot accent2"></div>
+        <div class="tl-date">6/9（二）— 6/11（四）</div>
+        <div class="tl-content">
+          <div class="tl-city">🌷 阿姆斯特丹（2 天）</div>
+          <div class="tl-desc">住宿待訂（建議中央站附近）<br>景點規劃中…</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot success"></div>
+        <div class="tl-date">6/11（四）</div>
+        <div class="tl-content">
+          <div class="tl-city">🛫 返回台北</div>
+          <div class="tl-desc">CX270 12:20 阿姆斯特丹 → 香港<br>⚠️ 09:30 前出發至機場</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot success"></div>
+        <div class="tl-date">6/12（五）</div>
+        <div class="tl-content">
+          <div class="tl-city">🏠 抵達台北</div>
+          <div class="tl-desc">CX530 09:05 香港 → 11:00 桃園 ✈️</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <p class="section-title">📋 景點規劃（進行中）</p>
+
+    <ul class="todo-list">
+      <li class="todo-item"><span class="todo-icon">⏳</span>阿姆斯特丹景點（5/26–5/30，4 天）</li>
+      <li class="todo-item"><span class="todo-icon">⏳</span>約克景點（5/31–6/2，2 天）</li>
+      <li class="todo-item"><span class="todo-icon">⏳</span>倫敦景點（6/2–6/9，7 天）</li>
+    </ul>
+
+  </section>
+
+  <!-- ── 餐廳 Tab ── -->
+  <section class="tab-panel" id="tab-food">
+    <div class="empty">
+      <div class="emoji">🍽️</div>
+      <p>餐廳資訊規劃中</p>
+      <p style="margin-top:8px;font-size:13px">即將加入三個城市的<br>精選餐廳推薦！</p>
+    </div>
+
+    <p class="section-title">📋 規劃清單</p>
+    <ul class="todo-list">
+      <li class="todo-item"><span class="todo-icon">⏳</span>阿姆斯特丹推薦餐廳</li>
+      <li class="todo-item"><span class="todo-icon">⏳</span>約克推薦餐廳</li>
+      <li class="todo-item"><span class="todo-icon">⏳</span>倫敦推薦餐廳</li>
+    </ul>
+  </section>
+
+  <!-- ── 住宿 Tab ── -->
+  <section class="tab-panel" id="tab-accom">
+
+    <p class="section-title">🏨 住宿清單</p>
+
+    <!-- Amsterdam 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🌷</div>
+        <div>
+          <div class="card-title">ID公寓酒店</div>
+          <div class="card-subtitle">阿姆斯特丹（去程）</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">地址</span>
+        <span class="val">Naritaweg 51, 1043 BP Amsterdam, 荷蘭</span>
+      </div>
+      <div class="accom-date">
+        <span>🛎️ 入住：5/26（一）15:00</span>
+        <span>🚪 退房：5/30（六）11:00</span>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=Naritaweg+51,+1043+BP+Amsterdam" target="_blank">
+        📍 Google Maps
+      </a>
+    </div>
+
+    <!-- York -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏰</div>
+        <div>
+          <div class="card-title">大教堂酒店</div>
+          <div class="card-subtitle">約克</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">地址</span>
+        <span class="val">Bootham, York, YO30 7BZ, 英國</span>
+      </div>
+      <div class="accom-date">
+        <span>🛎️ 入住：5/31（日）15:00–23:00</span>
+      </div>
+      <div class="accom-date">
+        <span>🚪 退房：6/2（二）07:00–11:00</span>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        ⚠️ 渡輪 09:30 抵達約克，飯店 15:00 才能入住，先寄放行李去遊覽
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=Bootham,+York,+YO30+7BZ" target="_blank">
+        📍 Google Maps
+      </a>
+    </div>
+
+    <!-- London -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎡</div>
+        <div>
+          <div class="card-title">39 South Lambeth Road</div>
+          <div class="card-subtitle">倫敦</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">地址</span>
+        <span class="val">39 South Lambeth Road, London, 英國</span>
+      </div>
+      <div class="accom-date">
+        <span>🛎️ 入住：6/2（二）15:00</span>
+        <span>🚪 退房：6/9（二）10:00</span>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=39+South+Lambeth+Road,+London" target="_blank">
+        📍 Google Maps
+      </a>
+    </div>
+
+    <!-- Amsterdam Return -->
+    <div class="card" style="border-color: rgba(251,191,36,.4);">
+      <div class="card-header">
+        <div class="card-icon">🌷</div>
+        <div>
+          <div class="card-title">阿姆斯特丹回程住宿</div>
+          <div class="card-subtitle">6/9–6/11（2 晚）</div>
+        </div>
+        <span class="pill pill-warn" style="margin-left:auto">⏳ 待訂</span>
+      </div>
+      <div class="info-row">
+        <span class="label">建議</span>
+        <span class="val">中央站（Centraal）附近，方便 6/11 搭機</span>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:8px">💡 推薦選項</p>
+      <div class="info-row">
+        <span class="label">⭐⭐⭐⭐</span>
+        <span class="val"><strong>Sir Adam Hotel</strong> — 中央站旁，評分 9.4</span>
+      </div>
+      <div class="info-row">
+        <span class="label">⭐⭐⭐⭐</span>
+        <span class="val"><strong>Park Plaza Victoria</strong> — 中央站步行 3 分鐘，有泳池</span>
+      </div>
+      <div class="info-row">
+        <span class="label">⭐⭐⭐</span>
+        <span class="val"><strong>ibis Amsterdam Centre</strong> — 中央站旁，CP 值高</span>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- Bottom Nav -->
+<nav id="nav">
+  <button class="nav-btn active" onclick="switchTab('transport', this)">
+    <span class="icon">✈️</span>
+    <span>交通</span>
+  </button>
+  <button class="nav-btn" onclick="switchTab('itinerary', this)">
+    <span class="icon">🗺️</span>
+    <span>行程</span>
+  </button>
+  <button class="nav-btn" onclick="switchTab('food', this)">
+    <span class="icon">🍽️</span>
+    <span>餐廳</span>
+  </button>
+  <button class="nav-btn" onclick="switchTab('accom', this)">
+    <span class="icon">🏨</span>
+    <span>住宿</span>
+  </button>
+</nav>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    document.getElementById('content').scrollTop = 0;
+  }
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+</script>
+
+</body>
+</html>
