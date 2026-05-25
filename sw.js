@@ -1,8 +1,9 @@
 const CACHE_NAME = 'europe-trip-v1.0.0';
+const BASE = self.registration.scope;
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  BASE,
+  BASE + 'index.html',
+  BASE + 'manifest.json'
 ];
 
 self.addEventListener('install', e => {
