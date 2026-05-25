@@ -281,6 +281,89 @@
     }
     .accom-date span { display: flex; align-items: center; gap: 3px; }
 
+    /* ── Day cards (per-city itinerary) ── */
+    .city-section { margin-bottom: 8px; }
+    .city-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 4px 8px;
+    }
+    .city-header .city-emoji { font-size: 22px; }
+    .city-header .city-name { font-size: 16px; font-weight: 700; }
+    .city-header .city-dates { font-size: 12px; color: var(--muted); }
+
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .day-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.03);
+      border-bottom: 1px solid var(--border);
+    }
+    .day-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 80px;
+    }
+    .day-theme {
+      font-size: 14px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .day-body { padding: 6px 0; }
+
+    .act-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .act-item:last-child { border-bottom: none; }
+    .act-time {
+      font-size: 12px;
+      color: var(--muted);
+      min-width: 44px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .act-main { flex: 1; }
+    .act-name { font-size: 14px; font-weight: 600; }
+    .act-desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+    .act-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 5px;
+    }
+
+    .wish-card {
+      background: rgba(124,92,252,.08);
+      border: 1px dashed rgba(124,92,252,.4);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .wish-card .wish-icon { font-size: 22px; }
+    .wish-card .wish-name { font-size: 14px; font-weight: 700; }
+    .wish-card .wish-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+    .wish-card .pill { margin-top: 6px; }
+
     /* Safe area */
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       #nav { padding-bottom: env(safe-area-inset-bottom); height: calc(var(--tab-h) + env(safe-area-inset-bottom)); }
@@ -295,7 +378,7 @@
   <div class="globe">✈️</div>
   <div class="title-block">
     <h1>歐洲旅行 2026</h1>
-    <p>5/25（日）— 6/12（五）</p>
+    <p>5/25（日）— 6/11（四）</p>
   </div>
   <div class="badge">v1.0</div>
 </header>
@@ -342,6 +425,10 @@
         <span class="label">日期</span>
         <span class="val">2026年5月25日（日）</span>
       </div>
+      <div class="info-row">
+        <span class="label">航廈</span>
+        <span class="val">🛫 桃園 T1 出發 → 🛬 香港 T1 抵達</span>
+      </div>
     </div>
 
     <div class="card">
@@ -377,6 +464,10 @@
       <div class="info-row">
         <span class="label">抵達</span>
         <span class="val">5/26（一）06:30 阿姆斯特丹</span>
+      </div>
+      <div class="info-row">
+        <span class="label">航廈</span>
+        <span class="val">🛫 香港 T1（33 號閘）→ 🛬 史基浦 G7 閘</span>
       </div>
     </div>
 
@@ -495,7 +586,7 @@
         <div class="card-icon">🛬</div>
         <div>
           <div class="card-title">阿姆斯特丹 → 香港</div>
-          <div class="card-subtitle">6/11（四）</div>
+          <div class="card-subtitle">6/10（三）</div>
         </div>
         <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
       </div>
@@ -513,15 +604,23 @@
         <div class="airport">
           <div class="code">HKG</div>
           <div class="name">香港</div>
-          <div class="time">隔日凌晨</div>
+          <div class="time">06:10+1</div>
         </div>
       </div>
       <div class="info-row">
         <span class="label">航班</span>
         <span class="val">國泰航空 CX270</span>
       </div>
+      <div class="info-row">
+        <span class="label">抵達</span>
+        <span class="val">6/11（四）06:10 香港</span>
+      </div>
+      <div class="info-row">
+        <span class="label">航廈</span>
+        <span class="val">🛫 史基浦 T3（報到櫃 23–24，G9 閘）→ 🛬 香港 T1</span>
+      </div>
       <div class="alert alert-warn" style="margin-top:8px">
-        ⚠️ 12:20 起飛！建議 09:30 前從市區出發搭火車（史基浦 15 分鐘），10:00 前到機場
+        ⚠️ 12:20 起飛！建議 09:30 前從市區出發搭火車（史基浦 15 分鐘），10:00 前到機場（T3）
       </div>
     </div>
 
@@ -530,7 +629,7 @@
         <div class="card-icon">🛬</div>
         <div>
           <div class="card-title">香港 → 台北</div>
-          <div class="card-subtitle">6/12（五）</div>
+          <div class="card-subtitle">6/11（四）</div>
         </div>
         <span class="pill pill-ok" style="margin-left:auto">✓ 已訂</span>
       </div>
@@ -557,7 +656,11 @@
       </div>
       <div class="info-row">
         <span class="label">日期</span>
-        <span class="val">2026年6月12日（五）</span>
+        <span class="val">2026年6月11日（四）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">航廈</span>
+        <span class="val">🛫 香港 T1 → 🛬 桃園 T1（B6 閘）</span>
       </div>
     </div>
 
@@ -635,10 +738,19 @@
 
       <div class="tl-item">
         <div class="tl-dot accent2"></div>
-        <div class="tl-date">6/9（二）— 6/11（四）</div>
+        <div class="tl-date">6/9（二）— 6/10（三）</div>
         <div class="tl-content">
-          <div class="tl-city">🌷 阿姆斯特丹（2 天）</div>
+          <div class="tl-city">🌷 阿姆斯特丹（1 晚）</div>
           <div class="tl-desc">住宿待訂（建議中央站附近）<br>景點規劃中…</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot success"></div>
+        <div class="tl-date">6/10（三）</div>
+        <div class="tl-content">
+          <div class="tl-city">🛫 返回台北</div>
+          <div class="tl-desc">CX270 12:20 阿姆斯特丹 → 香港（T3 G9 閘）<br>⚠️ 09:30 前出發至機場</div>
         </div>
       </div>
 
@@ -646,17 +758,8 @@
         <div class="tl-dot success"></div>
         <div class="tl-date">6/11（四）</div>
         <div class="tl-content">
-          <div class="tl-city">🛫 返回台北</div>
-          <div class="tl-desc">CX270 12:20 阿姆斯特丹 → 香港<br>⚠️ 09:30 前出發至機場</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot success"></div>
-        <div class="tl-date">6/12（五）</div>
-        <div class="tl-content">
           <div class="tl-city">🏠 抵達台北</div>
-          <div class="tl-desc">CX530 09:05 香港 → 11:00 桃園 ✈️</div>
+          <div class="tl-desc">CX530 09:05 香港 T1 → 11:00 桃園 T1 ✈️</div>
         </div>
       </div>
 
@@ -774,13 +877,13 @@
         <div class="card-icon">🌷</div>
         <div>
           <div class="card-title">阿姆斯特丹回程住宿</div>
-          <div class="card-subtitle">6/9–6/11（2 晚）</div>
+          <div class="card-subtitle">6/9–6/10（1 晚）</div>
         </div>
         <span class="pill pill-warn" style="margin-left:auto">⏳ 待訂</span>
       </div>
       <div class="info-row">
         <span class="label">建議</span>
-        <span class="val">中央站（Centraal）附近，方便 6/11 搭機</span>
+        <span class="val">中央站（Centraal）附近，方便 6/10 搭機</span>
       </div>
       <div class="divider"></div>
       <p style="font-size:12px;color:var(--muted);margin-bottom:8px">💡 推薦選項</p>
