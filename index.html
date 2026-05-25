@@ -237,6 +237,18 @@
     }
     a.map-link:hover { text-decoration: underline; }
 
+    /* Food tags */
+    .food-tag {
+      display: inline-block;
+      background: rgba(74,158,255,.15);
+      color: var(--accent);
+      font-size: 12px;
+      padding: 3px 9px;
+      border-radius: 12px;
+      margin: 2px 3px 2px 0;
+      border: 1px solid rgba(74,158,255,.25);
+    }
+
     /* Divider */
     .divider { height: 1px; background: var(--border); margin: 16px 0; }
 
@@ -687,7 +699,25 @@
         <div class="tl-date">5/26（一）— 5/30（六）</div>
         <div class="tl-content">
           <div class="tl-city">🌷 阿姆斯特丹（4 天）</div>
-          <div class="tl-desc">06:30 抵達史基浦 · 入住 ID公寓酒店<br>景點規劃中…</div>
+          <div class="tl-desc">06:30 抵達史基浦 · 入住 ID公寓酒店</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background: var(--warn)"></div>
+        <div class="tl-date">5/26（一）</div>
+        <div class="tl-content">
+          <div class="tl-city">🍽️ 晚餐 · 葳葳</div>
+          <div class="tl-desc">🕠 17:30 · <strong>Warung Spang Makandra</strong>（蘇利南料理）<br>📍 Gerard Doustraat 33, De Pijp<br><a class="map-link" href="https://maps.app.goo.gl/4iYBbRhm4eU3u4KK8" target="_blank">📌 Google Maps</a></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background: var(--warn)"></div>
+        <div class="tl-date">5/27（二）</div>
+        <div class="tl-content">
+          <div class="tl-city">🎨 梵谷美術館</div>
+          <div class="tl-desc">⏳ 入場時段補充中（待確認預約信件）</div>
         </div>
       </div>
 
@@ -778,18 +808,181 @@
 
   <!-- ── 餐廳 Tab ── -->
   <section class="tab-panel" id="tab-food">
-    <div class="empty">
-      <div class="emoji">🍽️</div>
-      <p>餐廳資訊規劃中</p>
-      <p style="margin-top:8px;font-size:13px">即將加入三個城市的<br>精選餐廳推薦！</p>
+
+    <p class="section-title">🌷 阿姆斯特丹</p>
+
+    <!-- Warung Spang Makandra -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🍛</div>
+        <div>
+          <div class="card-title">Warung Spang Makandra</div>
+          <div class="card-subtitle">蘇利南料理 · Gerard Doustraat 33</div>
+        </div>
+        <span class="pill pill-ok" style="margin-left:auto">5/26 晚餐</span>
+      </div>
+      <div class="info-row">
+        <span class="label">必點</span>
+        <span class="val">
+          <span class="food-tag">Spang Makandra Special</span>
+          <span class="food-tag">雞肉 Roti</span>
+          <span class="food-tag">Beef Rendang</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="label">營業</span>
+        <span class="val">週一–六 11:00–22:00 · 週日 13:00–22:00</span>
+      </div>
+      <div class="info-row">
+        <span class="label">特色</span>
+        <span class="val">融合印度、非洲、印尼風味，份量超大</span>
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/4iYBbRhm4eU3u4KK8" target="_blank">📌 Google Maps</a>
     </div>
 
-    <p class="section-title">📋 規劃清單</p>
+    <!-- The Pancake Bakery -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🥞</div>
+        <div>
+          <div class="card-title">The Pancake Bakery</div>
+          <div class="card-subtitle">荷蘭薄餅 · Prinsengracht 191</div>
+        </div>
+        <span class="pill pill-info" style="margin-left:auto">朋友推薦</span>
+      </div>
+      <div class="info-row">
+        <span class="label">必點</span>
+        <span class="val">
+          <span class="food-tag">🍒 Cherry Rum 薄餅</span>
+          <span class="food-tag">🍅 Caprese 薄餅</span>
+          <span class="food-tag">🧅 法式洋蔥湯</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="label">營業</span>
+        <span class="val">每日 09:00–20:30（五六至 21:00）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">價位</span>
+        <span class="val">€8–15 / 份 · TripAdvisor 4.1★（729 則）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">位置</span>
+        <span class="val">運河畔 17 世紀 VOC 倉庫，安妮法蘭克之家旁</span>
+      </div>
+      <div class="alert alert-info" style="margin-top:8px">
+        💡 建議開門早去，旺季排隊長
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/NRACwZ2ZizfL2D5E6" target="_blank">📌 Google Maps</a>
+    </div>
+
+    <!-- Foodhallen -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏛️</div>
+        <div>
+          <div class="card-title">Foodhallen</div>
+          <div class="card-subtitle">室內美食廣場 · Hannie Dankbaarpassage 16</div>
+        </div>
+        <span class="pill pill-info" style="margin-left:auto">朋友推薦</span>
+      </div>
+      <div class="info-row">
+        <span class="label">必吃攤</span>
+        <span class="val">
+          <span class="food-tag">🍢 De Ballenbar 炸肉球</span>
+          <span class="food-tag">🍤 Viet View 越南捲</span>
+          <span class="food-tag">🌀 手捲壽司</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="label">特色</span>
+        <span class="val">前電車廠改建，挑高空間，20+ 攤位</span>
+      </div>
+      <div class="info-row">
+        <span class="label">評價</span>
+        <span class="val">TripAdvisor 4★ · 食物好但價格偏高</span>
+      </div>
+      <div class="alert alert-info" style="margin-top:8px">
+        💡 週末人多，建議平日下午或早些到
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/AauYagWyczKUJUyv7" target="_blank">📌 Google Maps</a>
+    </div>
+
+    <!-- Albert Cuyp Markt -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛒</div>
+        <div>
+          <div class="card-title">Albert Cuypmarkt</div>
+          <div class="card-subtitle">露天市集 · Albert Cuypstraat · De Pijp</div>
+        </div>
+        <span class="pill pill-info" style="margin-left:auto">朋友推薦</span>
+      </div>
+      <div class="info-row">
+        <span class="label">必吃</span>
+        <span class="val">
+          <span class="food-tag">🧇 Rudi's 現做 Stroopwafel</span>
+          <span class="food-tag">🥞 Poffertjes 迷你煎餅</span>
+          <span class="food-tag">🐟 Kibbeling 炸魚塊</span>
+          <span class="food-tag">🐟 Raw Herring 生鯡魚</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="label">營業</span>
+        <span class="val">週一–六 09:00–17:00（免費入場）</span>
+      </div>
+      <div class="info-row">
+        <span class="label">規模</span>
+        <span class="val">1km · 260+ 攤 · 大部分 €5 以下</span>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        💡 帶現金！許多攤販不收信用卡
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/QVMqwGmqeoxkzRKE9" target="_blank">📌 Google Maps</a>
+    </div>
+
+    <!-- Kaasbar Amsterdam -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🧀</div>
+        <div>
+          <div class="card-title">Kaasbar Amsterdam</div>
+          <div class="card-subtitle">荷蘭起司吧 · Ferdinand Bolstraat 10</div>
+        </div>
+        <span class="pill pill-info" style="margin-left:auto">朋友推薦</span>
+      </div>
+      <div class="info-row">
+        <span class="label">必點</span>
+        <span class="val">
+          <span class="food-tag">🚂 起司火車傳送帶</span>
+          <span class="food-tag">🍷 起司 × 葡萄酒配對</span>
+          <span class="food-tag">🍸 起司 × 雞尾酒</span>
+        </span>
+      </div>
+      <div class="info-row">
+        <span class="label">特色</span>
+        <span class="val">24 種荷蘭小農起司，迴轉壽司式傳送帶</span>
+      </div>
+      <div class="info-row">
+        <span class="label">營業</span>
+        <span class="val">週一–四 16:00–22:00 · 週五–日 12:00–01:00</span>
+      </div>
+      <div class="info-row">
+        <span class="label">價位</span>
+        <span class="val">€4–10 / 份 · 2025 TripAdvisor 旅人之選</span>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        ⚠️ 建議提前訂位！Ferdinand Bolstraat 10，De Pijp
+      </div>
+      <a class="map-link" href="https://maps.app.goo.gl/8NNSkTVAMv7zEvVt8" target="_blank">📌 Google Maps</a>
+    </div>
+
+    <p class="section-title">📋 其他城市（規劃中）</p>
     <ul class="todo-list">
-      <li class="todo-item"><span class="todo-icon">⏳</span>阿姆斯特丹推薦餐廳</li>
       <li class="todo-item"><span class="todo-icon">⏳</span>約克推薦餐廳</li>
       <li class="todo-item"><span class="todo-icon">⏳</span>倫敦推薦餐廳</li>
     </ul>
+
   </section>
 
   <!-- ── 住宿 Tab ── -->
