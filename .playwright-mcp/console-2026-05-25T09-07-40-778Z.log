@@ -1,0 +1,3 @@
+[     256ms] [LOG] DONE @ http://localhost:8765/icon-generator.html:236
+[     259ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/favicon.ico:0
+[    4337ms] [LOG] roundRect available: function @ :4

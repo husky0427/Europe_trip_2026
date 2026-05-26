@@ -1,0 +1,6 @@
+[     162ms] [WARNING] Deprecated API for given entry type. @ https://mail.google.com/_/scs/mail-static/_/js/k=gmail.main.zh_TW.2Dq_kmm6rpQ.es5.OL/am=oAIAAAAgJP5UAODD_3v6YQMIHPgvD_58feCvddH8_xuGwD_BQwBT9RhAD0Ama4UUvPv_7ebTAgBv9-EznI8_JAAgwNbRbfvwEKOrNHyzvgAAAEydidNMAAAAAAAAAAAAAAAAAAAAAMvIRiYFBg/d=1/exm=b/ed=1/im=1/dg=0/br=1/wt=1/rs=AHGWq9CAb4lwyeaAUTE-wdSMWi1XM2Dn0g/cb=loaded_1/m=a?cb=2a1ee86e:2696
+[     527ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://mail.google.com/mail/u/0/data?token=%5B%22cftp%22,%22622649d3ee%22,%22gmail.pinto-server_20260514.08_p0%22,%22ZyMrc6cBAw-rFZnvtXyj5A%5Cu003d%5Cu003d%22,null,3,%22Qs0SX,kbcl1e%22%5D&dilte=0&gme=1&sme=1&pt=ji&di=0&dbv=112:0
+[    1866ms] [ERROR] Framing 'https://accounts.google.com/' violates the following Content Security Policy directive: "frame-ancestors https://studio.workspace.google.com". The request has been blocked.
+ @ :0
+[    6012ms] [ERROR] Framing 'https://ogs.google.com/' violates the following Content Security Policy directive: "frame-ancestors https://studio.workspace.google.com". The request has been blocked.
+ @ :0

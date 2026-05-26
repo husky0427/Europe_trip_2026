@@ -1,0 +1,20 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e71]:
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - img [ref=e75]
+          - heading "新增個人資料相片" [level=1] [ref=e76]
+        - generic [ref=e77]: 這麼做可幫助其他人認出您，同時讓您確認是否已登入自己的帳戶。
+        - generic [ref=e78]:
+          - img [ref=e79]
+          - generic [ref=e80]: d800609@gmail.com
+      - button "Edit profile picture" [ref=e86] [cursor=pointer]:
+        - img [ref=e89]
+        - img [ref=e93]
+    - generic [ref=e96]:
+      - button "略過" [ref=e97]:
+        - generic [ref=e99]: 略過
+      - button "新增個人資料相片" [ref=e100] [cursor=pointer]:
+        - generic [ref=e102]: 新增個人資料相片
+  - generic [ref=e66]: Google 帳戶

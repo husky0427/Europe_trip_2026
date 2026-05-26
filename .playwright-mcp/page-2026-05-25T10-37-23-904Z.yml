@@ -1,0 +1,78 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: Loading
+        - progressbar [ref=e8]
+      - main [ref=e255]:
+        - generic [ref=e256]:
+          - img [ref=e259]
+          - generic [ref=e264]:
+            - heading "2-Step Verification" [level=1] [ref=e265]
+            - generic [ref=e266]: To help keep your account safe, Google wants to make sure it’s really you trying to sign in
+            - link "d800609@gmail.com selected. Switch account" [ref=e268] [cursor=pointer]:
+              - generic [ref=e271]: d800609@gmail.com
+              - img [ref=e273]
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - heading "2-Step Verification" [level=2] [ref=e282]:
+              - generic [ref=e283]: 2-Step Verification
+            - generic [ref=e289]:
+              - heading "You have 2-Step Verification turned on" [level=2] [ref=e291]:
+                - img [ref=e293]
+                - generic [ref=e295]: You have 2-Step Verification turned on
+              - generic [ref=e298]: Signing in with a password requires a second step. Your passkey is your most-secure way to verify it's really you signing in.
+          - generic [ref=e302]:
+            - heading "Choose how you want to sign in:" [level=2] [ref=e304]:
+              - generic [ref=e305]: "Choose how you want to sign in:"
+            - list [ref=e309]:
+              - listitem [ref=e310]:
+                - link "Use your passkey" [ref=e311] [cursor=pointer]:
+                  - img [ref=e313]
+                  - generic [ref=e315]: Use your passkey
+              - listitem [ref=e316]:
+                - link "Tap Yes on your phone or tablet" [ref=e317] [cursor=pointer]:
+                  - img [ref=e319]
+                  - generic [ref=e321]:
+                    - text: Tap
+                    - strong [ref=e322]: "Yes"
+                    - text: on your phone or tablet
+              - listitem [ref=e323]:
+                - link "Use your phone or tablet to get a security code (even if it’s offline)" [ref=e324] [cursor=pointer]:
+                  - img [ref=e326]
+                  - generic [ref=e328]: Use your phone or tablet to get a security code (even if it’s offline)
+              - listitem [ref=e329]:
+                - link "Get a verification code at •••• ••• •93 2-Step Verification phone Standard rates apply Unavailable because you have more secure options" [disabled]:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - text: Get a verification code at
+                      - generic: •••• ••• •93
+                    - generic:
+                      - text: 2-Step Verification phone
+                      - generic: Standard rates apply
+                      - generic: Unavailable because you have more secure options
+              - listitem [ref=e330]:
+                - link "Try another way" [ref=e331] [cursor=pointer]:
+                  - img [ref=e333]
+                  - generic [ref=e335]: Try another way
+    - contentinfo [ref=e69]:
+      - combobox "Change language English (United States)" [ref=e73] [cursor=pointer]:
+        - generic:
+          - generic: English (United States)
+        - generic:
+          - img
+      - list [ref=e75]:
+        - listitem [ref=e76]:
+          - link "Help" [ref=e77] [cursor=pointer]:
+            - /url: https://support.google.com/accounts?hl=en-US&p=account_iph
+        - listitem [ref=e78]:
+          - link "Privacy" [ref=e79] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=TW&hl=en-US&privacy=true
+        - listitem [ref=e80]:
+          - link "Terms" [ref=e81] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=TW&hl=en-US
+  - iframe [ref=e82]:
+    
+  - generic [ref=e337]: 2-Step Verification To help keep your account safe, Google wants to make sure it’s really you trying to sign in

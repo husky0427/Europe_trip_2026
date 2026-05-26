@@ -1,0 +1,5 @@
+[    1516ms] [WARNING] Deprecated API for given entry type. @ https://mail.google.com/_/scs/mail-static/_/js/k=gmail.main.zh_TW.2Dq_kmm6rpQ.es5.OL/am=oAIAAAAgJP5UAODD_3v6YQMIHPgvD_58feCvddH8_xuGwD_BQwBT9RhAD0Ama4UUvPv_7ebTAgBv9-EznI8_JAAgwNbRbfvwEKOrNHyzvgAAAEydidNMAAAAAAAAAAAAAAAAAAAAAMvIRiYFBg/d=1/exm=b/ed=1/im=1/dg=0/br=1/wt=1/rs=AHGWq9CAb4lwyeaAUTE-wdSMWi1XM2Dn0g/cb=loaded_1/m=a?cb=b0222df0:2696
+[    2907ms] [ERROR] Framing 'https://accounts.google.com/' violates the following Content Security Policy directive: "frame-ancestors https://studio.workspace.google.com". The request has been blocked.
+ @ :0
+[    7028ms] [ERROR] Framing 'https://ogs.google.com/' violates the following Content Security Policy directive: "frame-ancestors https://studio.workspace.google.com". The request has been blocked.
+ @ :0

@@ -1,0 +1,48 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: Loading
+        - progressbar [ref=e8]
+      - main [ref=e185]:
+        - generic [ref=e186]:
+          - img [ref=e189]
+          - generic [ref=e194]:
+            - heading "Hi ShunYuan" [level=1] [ref=e195]
+            - link "d800609@gmail.com selected. Switch account" [ref=e197] [cursor=pointer]:
+              - generic [ref=e200]: d800609@gmail.com
+              - img [ref=e202]
+        - generic [ref=e212]:
+          - generic [ref=e220]:
+            - textbox "Enter your password" [active] [ref=e221]
+            - generic: Enter your password
+          - generic [ref=e228]:
+            - generic [ref=e231] [cursor=pointer]:
+              - checkbox "Show password" [ref=e232]
+              - generic:
+                - img
+            - generic [ref=e235] [cursor=pointer]: Show password
+        - generic [ref=e237]:
+          - button "Next" [ref=e241]:
+            - generic [ref=e244]: Next
+          - button "Try another way" [ref=e248]:
+            - generic [ref=e251]: Try another way
+    - contentinfo [ref=e69]:
+      - combobox "Change language English (United States)" [ref=e73] [cursor=pointer]:
+        - generic:
+          - generic: English (United States)
+        - generic:
+          - img
+      - list [ref=e75]:
+        - listitem [ref=e76]:
+          - link "Help" [ref=e77] [cursor=pointer]:
+            - /url: https://support.google.com/accounts?hl=en-US&p=account_iph
+        - listitem [ref=e78]:
+          - link "Privacy" [ref=e79] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=TW&hl=en-US&privacy=true
+        - listitem [ref=e80]:
+          - link "Terms" [ref=e81] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=TW&hl=en-US
+  - iframe [ref=e82]:
+    
+  - generic [ref=e253]: Hi ShunYuan
