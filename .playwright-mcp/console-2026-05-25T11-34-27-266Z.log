@@ -4,3 +4,5 @@
  @ :0
 [    6012ms] [ERROR] Framing 'https://ogs.google.com/' violates the following Content Security Policy directive: "frame-ancestors https://studio.workspace.google.com". The request has been blocked.
  @ :0
+[127676647ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://signaler-pa.clients6.google.com/punctual/multi-watch/channel?VER=8&gsessionid=eZ_SEenmKfEMcvqsjVCBE3AJcIx47qlEAhRjQhqKPIs&key=AIzaSyCIMH2ks6VPAfRC2lqU_Snz1Lo76XGdnlc&RID=rpc&SID=ChXCyVSVlP3zia0E5CfZpw&AID=0&CI=0&TYPE=xmlhttp&zx=oxcvors5f0b1&t=1:0
+[137232527ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://signaler-pa.clients6.google.com/punctual/multi-watch/channel?VER=8&gsessionid=heKmnZoXtuhS2Icps0fLpZEk1Qcbs9uGejjkeYadIG4&key=AIzaSyCIMH2ks6VPAfRC2lqU_Snz1Lo76XGdnlc&SID=MLf1yI3-jXC-ANd-mcGOdw&RID=69614&TYPE=terminate&zx=tg6p3k13t0zb:0
