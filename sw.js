@@ -1,4 +1,4 @@
-const CACHE_NAME = 'europe-trip-v2.1.0';
+const CACHE_NAME = 'europe-trip-v2.6.0';
 const BASE = self.registration.scope;
 const ASSETS = [
   BASE,
